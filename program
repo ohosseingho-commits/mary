@@ -1,0 +1,977 @@
+<meta charset="utf-8">
+<title>روزانهٔ بانو</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Layout: the day drawn as a 24-hour sun dial up top, then the day's tools and guides in living order: today → meals → foods → drinks → calm → night. */
+:root{
+  --bg:#F1F4EA; --bg-glass:rgba(241,244,234,.9); --surface:#FBFCF6; --surface-2:#E6EBDC;
+  --ink:#1C2A22; --muted:#56655B; --line:#D3DAC8;
+  --accent:#9A5600; --on-accent:#FFF8EC; --accent-fill:#E2A23B; --accent-soft:#F6E5C3;
+  --night:#34417E; --dusk:#A07FA8;
+  --leaf:#246A44; --leaf-soft:#DAEADB; --pom:#AE2F3C; --pom-soft:#F5DFDD; --water:#15657B; --water-soft:#D4E9EE;
+  --band:#1F2652; --band-ink:#ECEBF7; --band-muted:#B9BBDD; --band-line:#3A4277;
+  --font-display:"Markazi Text","Vazirmatn",Georgia,serif;
+  --font-body:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  --r-sm:10px; --r-md:14px; --r-lg:22px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1613; --bg-glass:rgba(15,22,19,.88); --surface:#16201B; --surface-2:#1F2B25;
+    --ink:#E5EBE1; --muted:#9DAAA0; --line:#2C3A33;
+    --accent:#EFB04C; --on-accent:#1E1404; --accent-fill:#D9982F; --accent-soft:#36290F;
+    --night:#8C98EA; --dusk:#C8A5CE;
+    --leaf:#74C795; --leaf-soft:#18301F; --pom:#F07F88; --pom-soft:#3A1D21; --water:#68C7DD; --water-soft:#122E37;
+    --band:#141A3A; --band-ink:#ECEBF7; --band-muted:#AEB1D6; --band-line:#2C3466;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1613; --bg-glass:rgba(15,22,19,.88); --surface:#16201B; --surface-2:#1F2B25;
+  --ink:#E5EBE1; --muted:#9DAAA0; --line:#2C3A33;
+  --accent:#EFB04C; --on-accent:#1E1404; --accent-fill:#D9982F; --accent-soft:#36290F;
+  --night:#8C98EA; --dusk:#C8A5CE;
+  --leaf:#74C795; --leaf-soft:#18301F; --pom:#F07F88; --pom-soft:#3A1D21; --water:#68C7DD; --water-soft:#122E37;
+  --band:#141A3A; --band-ink:#ECEBF7; --band-muted:#AEB1D6; --band-line:#2C3466;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-variant-numeric:tabular-nums}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg-glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:28px;line-height:1;color:var(--ink);text-decoration:none;flex-shrink:0}
+.brand svg{width:28px;height:28px}
+.nav{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex-shrink:0;padding:6px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap}
+.nav a:hover{background:var(--surface-2);color:var(--ink)}
+
+/* hero */
+.hero{padding-block:44px 32px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}
+.eyebrow{color:var(--muted);font-size:15px;font-weight:500}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(48px,6.4vw,76px);line-height:1.05;margin-block:4px 10px;text-wrap:balance}
+.lead{color:var(--muted);font-size:18px;max-width:32em}
+
+.now{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;display:grid;gap:10px}
+.now-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 12px;border-radius:999px;font-size:13px;font-weight:600;background:var(--accent-soft);color:var(--accent)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+@media (prefers-reduced-motion: no-preference){ .pill .dot{animation:pulse 2.4s ease-in-out infinite} }
+@keyframes pulse{50%{opacity:.25}}
+.now-range{color:var(--muted);font-size:14px}
+.now-title{font-family:var(--font-display);font-size:38px;font-weight:700;line-height:1.15}
+.now-detail{font-size:16px;max-width:36em}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent-fill);border-radius:99px;transition:width .6s ease}
+.hint{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border-radius:var(--r-sm);background:var(--water-soft);color:var(--water);font-size:15px;font-weight:500}
+.hint svg{flex-shrink:0;width:16px;height:20px;margin-top:4px}
+.now-next{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:12px;font-size:15px}
+.now-next b{font-weight:600}
+.now-next span{color:var(--muted)}
+
+.dial-wrap{display:grid;justify-items:center;gap:16px}
+.dial{width:100%;max-width:430px;height:auto;aspect-ratio:1/1;overflow:visible}
+.dial .seg{transition:opacity .4s}
+.dial.has-now .seg:not(.is-now){opacity:.5}
+.dial-tick{stroke:var(--muted)}
+.dial-num{fill:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500}
+.dial-time{fill:var(--ink);font-family:var(--font-body);font-size:34px;font-weight:700}
+.dial-label{fill:var(--accent);font-family:var(--font-body);font-size:13px;font-weight:600}
+.dial-kicker{fill:var(--muted);font-family:var(--font-body);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+/* sections */
+.sec{padding-block:64px;border-top:1px solid var(--line);scroll-margin-top:56px}
+.sec-head{display:grid;gap:8px;margin-bottom:28px;max-width:44em}
+.kicker{color:var(--accent);font-size:14px;font-weight:600}
+.sec h2{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.2vw,48px);line-height:1.1;text-wrap:balance}
+.sec-sub{color:var(--muted);font-size:17px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.panel-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.panel-h h3{font-size:18px;font-weight:700}
+.panel-h span{color:var(--muted);font-size:14px}
+
+/* today */
+.today-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start}
+.side{display:grid;gap:22px}
+.checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px 28px}
+.chk-group{min-width:0}
+.chk-h{font-size:13px;font-weight:600;color:var(--muted);padding:12px 4px 4px}
+.chk{position:relative;display:grid;grid-template-columns:26px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.chk:last-child{border-bottom:0}
+.chk input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.box{width:24px;height:24px;border-radius:8px;border:1.5px solid var(--muted);display:grid;place-items:center;transition:background .2s,border-color .2s}
+.box svg{width:16px;height:16px}
+.box path{fill:none;stroke:var(--surface);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14;stroke-dashoffset:14;transition:stroke-dashoffset .25s ease}
+.chk input:checked + .box{background:var(--leaf);border-color:var(--leaf)}
+.chk input:checked + .box path{stroke-dashoffset:0}
+.chk input:focus-visible + .box{outline:2px solid var(--accent);outline-offset:2px}
+.chk input:checked ~ .chk-l{color:var(--muted)}
+.chk-l{font-size:15.5px;font-weight:500}
+.chk-t{font-size:13px;color:var(--muted);white-space:nowrap}
+.chk:hover .box{border-color:var(--leaf)}
+
+.score{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+.ring{width:112px;height:112px}
+.ring circle{fill:none;stroke-width:10}
+.ring .trk{stroke:var(--surface-2)}
+.ring .val{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+.ring text{fill:var(--ink);font-family:var(--font-body);font-size:24px;font-weight:700}
+.score-msg{font-size:15px}
+.score-count{color:var(--muted);font-size:14px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.wk{display:grid;justify-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.wk-bar{width:100%;max-width:26px;height:64px;border-radius:7px;background:var(--surface-2);display:flex;align-items:flex-end;overflow:hidden}
+.wk-bar i{display:block;width:100%;background:var(--leaf);border-radius:7px;min-height:3px;transition:height .5s ease}
+.wk.is-today{color:var(--ink);font-weight:700}
+.wk.is-today .wk-bar{outline:1.5px solid var(--leaf);outline-offset:2px}
+
+.glasses{display:flex;flex-wrap:wrap;gap:6px;direction:rtl}
+.glass{width:34px;height:44px;padding:0;border:0;background:none;cursor:pointer;border-radius:8px}
+.glass svg{width:100%;height:100%;display:block}
+.glass .g-out{fill:none;stroke:var(--water);stroke-width:1.5;stroke-linejoin:round}
+.glass .g-in{fill:transparent;transition:fill .2s}
+.glass.full .g-in{fill:var(--water)}
+.glass.extra .g-out{stroke-dasharray:3 2.5}
+.glass:hover .g-in{fill:var(--water-soft)}
+.glass.full:hover .g-in{fill:var(--water)}
+.water-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.water-txt{font-size:15px}
+.water-txt b{font-weight:700;color:var(--water)}
+.water-goal{font-size:13px;color:var(--muted)}
+.btn-ghost{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 14px;font-size:14px;cursor:pointer;color:var(--muted)}
+.btn-ghost:hover{color:var(--ink);border-color:var(--muted)}
+.sync{margin-top:14px;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--muted);flex-shrink:0}
+.sync.cloud i{background:var(--leaf)}
+
+/* meals */
+.meals-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:start}
+.meal{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding-block:24px;border-top:1px solid var(--line)}
+.meal:first-child{border-top:0;padding-top:0}
+.meal-time{display:grid;align-content:start;gap:4px;justify-items:start}
+.mt{font-family:var(--font-display);font-size:36px;font-weight:600;line-height:1.1;color:var(--accent)}
+.mt-sub{font-size:13px;color:var(--muted)}
+.meal-body{display:grid;gap:10px;min-width:0}
+.meal h3{font-size:21px;font-weight:700;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tag{font-size:13px;font-weight:500;color:var(--muted)}
+.meal ul{display:grid;gap:6px}
+.meal li{position:relative;padding-right:18px;font-size:16px}
+.meal li::before{content:"";position:absolute;right:2px;top:.8em;width:6px;height:6px;border-radius:50%;background:var(--accent-fill)}
+.pre-water{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--water);background:var(--water-soft);padding:3px 12px;border-radius:999px;justify-self:start}
+.pre-water svg{width:11px;height:14px}
+.meal-note{font-size:14.5px;color:var(--muted);border-right:2px solid var(--accent-fill);padding-right:12px}
+.pill.next{background:var(--surface-2);color:var(--muted)}
+.rules{position:sticky;top:76px;display:grid;gap:18px}
+.rules h3{font-family:var(--font-display);font-size:28px;font-weight:700;line-height:1.2}
+.rule{display:grid;gap:2px;padding-top:14px;border-top:1px solid var(--line)}
+.rule b{font-size:15px;font-weight:700}
+.rule span{font-size:14.5px;color:var(--muted)}
+
+/* foods */
+.finder{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;margin-bottom:36px;display:grid;gap:12px}
+.finder label{font-size:17px;font-weight:700}
+.finder input{width:100%;font-size:18px;padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);outline:none}
+.finder input:focus{border-color:var(--accent)}
+.examples{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px;color:var(--muted)}
+.ex{border:1px dashed var(--line);background:none;border-radius:999px;padding:2px 12px;cursor:pointer;font-size:14px;color:var(--ink)}
+.ex:hover{border-color:var(--accent);color:var(--accent)}
+.results{display:grid;gap:6px}
+.res{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:16px;padding:6px 0}
+.res b{font-weight:600}
+.res small{color:var(--muted);font-size:13px}
+.verdict{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px}
+.verdict.good{background:var(--leaf-soft);color:var(--leaf)}
+.verdict.bad{background:var(--pom-soft);color:var(--pom)}
+.res-empty{color:var(--muted);font-size:15px}
+.food-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px}
+.fcol h3{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.fcol h3 .mark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center}
+.fcol.good h3 .mark{background:var(--leaf-soft);color:var(--leaf)}
+.fcol.bad h3 .mark{background:var(--pom-soft);color:var(--pom)}
+.fcol h3 svg{width:14px;height:14px}
+.fgroup{padding-block:12px;border-bottom:1px solid var(--line)}
+.fgroup:last-child{border-bottom:0}
+.fgroup h4{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;font-size:14.5px;line-height:1.7;transition:box-shadow .2s}
+.chip.good{background:var(--leaf-soft);color:var(--leaf)}
+.chip.bad{background:var(--pom-soft);color:var(--pom)}
+.chip.hit{box-shadow:0 0 0 2px currentColor}
+
+/* drinks */
+.drinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.drink{display:grid;gap:6px;padding-top:16px;border-top:2px solid var(--water)}
+.drink .big{font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1.05;color:var(--water)}
+.drink p{font-size:15.5px;color:var(--muted)}
+.nodrink{margin-top:36px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.nodrink b{font-size:15px;margin-left:6px}
+
+/* calm */
+.calm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.breath{display:grid;gap:18px;justify-items:center;text-align:center}
+.orb-stage{position:relative;width:100%;max-width:250px;aspect-ratio:1/1;display:grid;place-items:center}
+.orb-stage::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed var(--line)}
+.orb{position:absolute;inset:0;border-radius:50%;background:var(--water-soft);box-shadow:inset 0 0 0 2px var(--water);transform:scale(.55);transition-property:transform;transition-timing-function:ease-in-out;transition-duration:1s}
+.orb-label{position:relative;font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--water)}
+.breath-time{font-size:15px;color:var(--muted)}
+.seg-ctl{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:0;gap:2px}
+.seg-ctl legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.seg-ctl input{position:absolute;opacity:0;pointer-events:none}
+.seg-ctl label{padding:4px 14px;border-radius:999px;font-size:14px;cursor:pointer;color:var(--muted)}
+.seg-ctl input:checked + label{background:var(--surface-2);color:var(--ink);font-weight:600}
+.seg-ctl input:focus-visible + label{outline:2px solid var(--accent);outline-offset:1px}
+.btn{border:0;border-radius:999px;padding:10px 30px;font-size:16px;font-weight:700;cursor:pointer;background:var(--accent);color:var(--on-accent)}
+.btn:hover{filter:brightness(1.06)}
+.breath-msg{font-size:14px;color:var(--leaf);min-height:1.6em}
+.practices{display:grid;gap:22px}
+.practice{display:grid;gap:4px}
+.practice h3{font-size:19px;font-weight:700}
+.practice p{color:var(--muted);font-size:15.5px}
+
+/* night */
+.night{background:var(--band);color:var(--band-ink);padding-block:72px;scroll-margin-top:56px}
+.night .kicker{color:var(--accent-fill)}
+.night h2{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.2vw,48px);line-height:1.1}
+.night .sec-sub{color:var(--band-muted)}
+.seq{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:36px}
+.step{position:relative;display:grid;gap:4px;padding-top:28px;padding-left:12px}
+.step::before{content:"";position:absolute;top:7px;right:0;left:0;height:1.5px;background:var(--band-line)}
+.step::after{content:"";position:absolute;top:2px;right:0;width:12px;height:12px;border-radius:50%;background:var(--band);box-shadow:inset 0 0 0 2px var(--accent-fill)}
+.step.sleep::after{background:var(--accent-fill)}
+.step .t{font-family:var(--font-display);font-size:46px;font-weight:700;line-height:1}
+.step b{font-size:16px;font-weight:700}
+.step span{font-size:14.5px;color:var(--band-muted);max-width:18em}
+.night-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:48px;padding-top:28px;border-top:1px solid var(--band-line)}
+.night-notes h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.night-notes p{color:var(--band-muted);font-size:15.5px}
+
+footer{padding-block:36px 48px;color:var(--muted);font-size:14px}
+footer p{max-width:60em}
+
+@media (max-width: 900px){
+  .hero-grid,.today-grid,.meals-grid,.calm-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-grid{gap:32px}
+  .dial{max-width:360px}
+  .rules{position:static}
+}
+@media (max-width: 640px){
+  .hero{padding-block:28px 20px}
+  .now{padding:18px}
+  .now-title{font-size:32px}
+  .sec{padding-block:48px}
+  .meal{grid-template-columns:minmax(0,1fr);gap:8px}
+  .meal-time{grid-auto-flow:column;justify-content:start;align-items:baseline;gap:10px}
+  .mt{font-size:30px}
+  .seq{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .brand{font-size:24px}
+  .brand svg{width:24px;height:24px}
+  .score{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:0s!important;animation:none!important}
+}
+</style>
+
+<div class="app" dir="rtl" lang="fa">
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="#top" aria-label="روزانهٔ بانو">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11" style="fill:none;stroke:var(--line);stroke-width:4"/><path d="M14 3a11 11 0 0 1 11 11" style="fill:none;stroke:var(--accent-fill);stroke-width:4"/><path d="M14 25A11 11 0 0 1 3 14" style="fill:none;stroke:var(--night);stroke-width:4"/></svg>
+        روزانهٔ بانو
+      </a>
+      <nav class="nav" aria-label="بخش‌ها">
+        <a href="#today">امروز</a>
+        <a href="#meals">وعده‌ها</a>
+        <a href="#foods">خوراکی‌ها</a>
+        <a href="#drinks">نوشیدنی</a>
+        <a href="#calm">آرامش</a>
+        <a href="#sleep">خواب</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow num" id="dateLine">امروز</p>
+          <h1 id="greet">روز بخیر</h1>
+          <p class="lead">برنامهٔ روزانهٔ شما ساعت به ساعت: خواب، غذا، آب، پیاده‌روی و آرامش.</p>
+
+          <div class="now" aria-live="polite">
+            <div class="now-top">
+              <span class="pill"><span class="dot"></span>الان</span>
+              <span class="now-range num" id="nowRange"></span>
+            </div>
+            <p class="now-title" id="nowTitle">…</p>
+            <p class="now-detail" id="nowDetail"></p>
+            <div class="bar" aria-hidden="true"><i id="nowBar"></i></div>
+            <p class="hint" id="nowHint" hidden><svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1C6 1 1 7 1 10.2A5 5 0 0 0 11 10.2C11 7 6 1 6 1Z" style="fill:currentColor"/></svg><span id="nowHintText"></span></p>
+            <div class="now-next"><b id="nextTitle"></b><span class="num" id="nextIn"></span></div>
+          </div>
+        </div>
+
+        <div class="dial-wrap">
+          <svg class="dial" id="dial" viewBox="0 0 360 360" role="img" aria-label="ساعت ۲۴ ساعتهٔ برنامهٔ روز"></svg>
+          <div class="legend" aria-hidden="true">
+            <span><i style="background:var(--night)"></i>خواب</span>
+            <span><i style="background:var(--dusk)"></i>آرامش پیش از خواب</span>
+            <span><i style="background:var(--accent-fill)"></i>وعده‌ها</span>
+            <span><i style="background:var(--leaf)"></i>پیاده‌روی</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="today">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">چک‌لیست امروز</p>
+          <h2>هر کاری را انجام دادید، تیک بزنید</h2>
+          <p class="sec-sub">فردا صبح چک‌لیست تازه می‌شود و نمودار هفته نشان می‌دهد چقدر به برنامه پایبند بوده‌اید.</p>
+        </div>
+        <div class="today-grid">
+          <div class="panel">
+            <div class="checklist" id="checklist"></div>
+          </div>
+          <div class="side">
+            <div class="panel">
+              <div class="score">
+                <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="trk" cx="60" cy="60" r="50"/>
+                  <circle class="val" id="ringVal" cx="60" cy="60" r="50" transform="rotate(-90 60 60)" style="stroke-dasharray:314.16;stroke-dashoffset:314.16"/>
+                  <text id="ringTxt" x="60" y="62" text-anchor="middle" dominant-baseline="middle">۰٪</text>
+                </svg>
+                <div>
+                  <p class="score-msg" id="scoreMsg"></p>
+                  <p class="score-count num" id="scoreCount"></p>
+                </div>
+              </div>
+              <div class="week" id="week" aria-label="هفت روز اخیر"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-h"><h3>آب امروز</h3><span>هر لیوان ۲۵۰ میلی‌لیتر</span></div>
+              <div class="glasses" id="glasses"></div>
+              <div class="water-row">
+                <div>
+                  <p class="water-txt num" id="waterTxt"></p>
+                  <p class="water-goal" id="waterGoal"></p>
+                </div>
+                <button type="button" class="btn-ghost" id="waterMinus">یکی کم کن</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="sync" id="sync"><i></i><span id="syncTxt">پیشرفت شما در همین مرورگر ذخیره می‌شود.</span></p>
+      </div>
+    </section>
+
+    <section class="sec" id="meals">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">وعده‌های روز</p>
+          <h2>پنج وعدهٔ سبک، سر ساعت</h2>
+          <p class="sec-sub">مقدارها دقیق نوشته شده‌اند. وعده‌ای که الان وقتش است علامت می‌خورد.</p>
+        </div>
+        <div class="meals-grid">
+          <div>
+            <article class="meal" data-seg="wake">
+              <div class="meal-time"><span class="mt">قبل از ۸</span><span class="mt-sub">صبح</span><span class="pill" hidden></span></div>
+              <div class="meal-body">
+                <p class="pre-water"><svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1C6 1 1 7 1 10.2A5 5 0 0 0 11 10.2C11 7 6 1 6 1Z" style="fill:currentColor"/></svg>بعد از بیداری یک لیوان آب ولرم، صبحانه نیم ساعت بعد</p>
+                <h3>صبحانه <span class="tag">سبک و سرشار از فیبر</span></h3>
+                <ul>
+                  <li>نان سنگک با مقدار کمی کرهٔ محلی یا روغن زیتون</li>
+                  <li>۳ عدد خرمای نرم یا چند عدد انجیر خشک</li>
+                  <li>یک کاسهٔ کوچک جوانهٔ گندم یا ماش</li>
+                </ul>
+                <p class="meal-note">مربای پرشکر نخورید. به‌جای شکر، ۱ قاشق چای‌خوری عسل طبیعی.</p>
+              </div>
+            </article>
+            <article class="meal" data-seg="snack1">
+              <div class="meal-time"><span class="mt">۱۰ تا ۱۱</span><span class="mt-sub">میان‌وعده</span><span class="pill" hidden></span></div>
+              <div class="meal-body">
+                <h3>میان‌وعدهٔ صبح</h3>
+                <ul>
+                  <li>۱ واحد میوه</li>
+                  <li>یا ۱۰ تا ۱۵ عدد بادام درختی و ۲ عدد گردو</li>
+                </ul>
+              </div>
+            </article>
+            <article class="meal" data-seg="lunch">
+              <div class="meal-time"><span class="mt">۱۳ تا ۱۵</span><span class="mt-sub">ظهر</span><span class="pill" hidden></span></div>
+              <div class="meal-body">
+                <p class="pre-water"><svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1C6 1 1 7 1 10.2A5 5 0 0 0 11 10.2C11 7 6 1 6 1Z" style="fill:currentColor"/></svg>۳۰ دقیقه قبل: یک لیوان آب ولرم</p>
+                <h3>ناهار</h3>
+                <ul>
+                  <li>یک کاسهٔ متوسط سالاد فصل (کاهو، خیار، هویج رنده‌شده و کمی سبزی برگ سبز) با روغن زیتون و آبلیموی خانگی</li>
+                  <li>۱۰۰ تا ۱۲۰ گرم پروتئین سبک: ماهی آب‌پز یا بخارپز، بوقلمون، یا مرغ بدون پوست، بال و گردن</li>
+                  <li>یک کف دست نان سنگک یا برنج ایرانی، ترجیحاً کته با روغن زیتون</li>
+                  <li>یک کاسهٔ کوچک عدس یا لوبیای خوب‌پخته که نفخش گرفته شده باشد</li>
+                </ul>
+              </div>
+            </article>
+            <article class="meal" data-seg="snack2">
+              <div class="meal-time"><span class="mt">۱۶ تا ۱۷</span><span class="mt-sub">میان‌وعده</span><span class="pill" hidden></span></div>
+              <div class="meal-body">
+                <h3>میان‌وعدهٔ عصر</h3>
+                <ul>
+                  <li>۱ لیوان دمنوش آرام‌بخش، مثل بابونه یا سنبل‌الطیب</li>
+                  <li>یا ۱ واحد میوهٔ دیگر</li>
+                </ul>
+              </div>
+            </article>
+            <article class="meal" data-seg="dinner">
+              <div class="meal-time"><span class="mt">تا ۱۹:۳۰</span><span class="mt-sub">حداکثر</span><span class="pill" hidden></span></div>
+              <div class="meal-body">
+                <p class="pre-water"><svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1C6 1 1 7 1 10.2A5 5 0 0 0 11 10.2C11 7 6 1 6 1Z" style="fill:currentColor"/></svg>۳۰ دقیقه قبل: یک لیوان آب ولرم</p>
+                <h3>شام <span class="tag">سبک</span></h3>
+                <ul>
+                  <li>سوپ سبزیجات یا سوپ جو سبوس‌دار</li>
+                  <li>یک کاسهٔ کوچک ماست کم‌چرب خانگی، اگر لبنیات برایتان مشکلی ایجاد نمی‌کند</li>
+                  <li>یا چند عدد مغز، مثل فندق و پسته</li>
+                </ul>
+                <p class="meal-note">شام باید سبک باشد و دست‌کم ۲ تا ۳ ساعت پیش از خواب خورده شود.</p>
+              </div>
+            </article>
+          </div>
+          <aside class="rules">
+            <h3>قانون‌های سفره</h3>
+            <div class="rule"><b>۳۰ دقیقه قبل از غذا</b><span>یک لیوان آب ولرم بنوشید.</span></div>
+            <div class="rule"><b>حین غذا</b><span>هیچ مایعی ننوشید. یک ساعت بعد از غذا نوشیدن آب اشکالی ندارد.</span></div>
+            <div class="rule"><b>غذای مانده</b><span>غذایی که بیش از یک بار گرم شده یا در یخچال مانده را نخورید.</span></div>
+            <div class="rule"><b>حبوبات</b><span>خوب بپزید تا نفخ آن گرفته شود.</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="foods">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">خوراکی‌های مفید و مضر</p>
+          <h2>این خوراکی در برنامه هست؟</h2>
+          <p class="sec-sub">نام خوراکی را بنویسید تا ببینید مفید است یا باید کاملاً حذف شود.</p>
+        </div>
+        <div class="finder">
+          <label for="foodQ">جست‌وجوی خوراکی</label>
+          <input id="foodQ" type="search" autocomplete="off" placeholder="مثلاً پیتزا، گردو، چای…">
+          <div class="examples" id="examples">امتحان کنید:
+            <button type="button" class="ex">پیتزا</button>
+            <button type="button" class="ex">گردو</button>
+            <button type="button" class="ex">چای</button>
+            <button type="button" class="ex">ماکارونی</button>
+            <button type="button" class="ex">مرغ</button>
+          </div>
+          <div class="results" id="results" aria-live="polite"></div>
+        </div>
+        <div class="food-cols">
+          <div class="fcol good">
+            <h3><span class="mark"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" style="fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"/></svg></span>مفید و مجاز</h3>
+            <div id="goodList"></div>
+          </div>
+          <div class="fcol bad">
+            <h3><span class="mark"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" style="fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round"/></svg></span>کاملاً حذف شوند</h3>
+            <div id="badList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="drinks">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">آب و نوشیدنی</p>
+          <h2>ولرم بنوشید، کم‌کم و در طول روز</h2>
+        </div>
+        <div class="drinks">
+          <div class="drink"><span class="big">۲ تا ۲٫۵ لیتر</span><p>در طول روز، یعنی ۸ تا ۱۰ لیوان. شمارندهٔ بخش «امروز» حسابش را نگه می‌دارد.</p></div>
+          <div class="drink"><span class="big">ولرم</span><p>آب ولرم یا دمنوش‌های گیاهی، مثل نعناع و بابونه.</p></div>
+          <div class="drink"><span class="big">۱ ساعت</span><p>بعد از غذا صبر کنید، بعد آب بنوشید. حین غذا هیچ مایعی ننوشید.</p></div>
+        </div>
+        <div class="nodrink">
+          <b>ممنوع:</b>
+          <span class="chip bad">نوشابه</span>
+          <span class="chip bad">نوشیدنی‌های گازدار</span>
+          <span class="chip bad">آبمیوهٔ صنعتی</span>
+          <span class="chip bad">قهوه</span>
+          <span class="chip bad">چای پررنگ</span>
+          <span class="chip bad">الکل</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="calm">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">آرامش</p>
+          <h2>روزی ۱۵ تا ۲۰ دقیقه برای خودتان</h2>
+          <p class="sec-sub">با دایره نفس بکشید: وقتی بزرگ می‌شود دم، وقتی کوچک می‌شود بازدم. تمرین ۱۵ دقیقه‌ای که تمام شود، در چک‌لیست امروز تیک می‌خورد.</p>
+        </div>
+        <div class="calm-grid">
+          <div class="panel breath">
+            <div class="orb-stage"><div class="orb" id="orb"></div><span class="orb-label" id="orbLabel" aria-live="polite">آماده</span></div>
+            <p class="breath-time num" id="breathTime">۴ ثانیه دم · ۲ ثانیه نگه‌داشتن · ۶ ثانیه بازدم</p>
+            <fieldset class="seg-ctl">
+              <legend>مدت تمرین</legend>
+              <input type="radio" name="bdur" id="bd5" value="5"><label for="bd5">۵ دقیقه</label>
+              <input type="radio" name="bdur" id="bd15" value="15" checked><label for="bd15">۱۵ دقیقه</label>
+              <input type="radio" name="bdur" id="bd20" value="20"><label for="bd20">۲۰ دقیقه</label>
+            </fieldset>
+            <button type="button" class="btn" id="breathBtn">شروع</button>
+            <p class="breath-msg" id="breathMsg"></p>
+          </div>
+          <div class="practices">
+            <div class="practice"><h3>پیاده‌روی</h3><p>روزانه ۳۰ دقیقه پیاده‌روی آرام، ترجیحاً در هوای آزاد و دور از استرس.</p></div>
+            <div class="practice"><h3>آرام‌سازی</h3><p>مدیتیشن، تنفس عمیق یا گوش دادن به صداهای طبیعت، هر روز ۱۵ تا ۲۰ دقیقه.</p></div>
+            <div class="practice"><h3>سرگرمی‌های آرام</h3><p>مطالعه، موسیقی ملایم یا باغبانی سبک.</p></div>
+            <div class="practice"><h3>دوری از استرس‌زاها</h3><p>موقعیت‌ها و آدم‌هایی را که به شما استرس می‌دهند تا جای ممکن مدیریت کنید یا از آن‌ها فاصله بگیرید.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="night" id="sleep">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">خواب</p>
+          <h2>هر شب ساعت ۲۳ بخوابید</h2>
+          <p class="sec-sub">۸ تا ۹ ساعت خواب. شب از ساعت ۱۹:۳۰، کمی پس از شام، کم‌کم آرام می‌شود.</p>
+        </div>
+        <div class="seq">
+          <div class="step"><span class="t num">۱۹:۳۰</span><b>آخرین لقمهٔ شام</b><span>شام سبک، ۲ تا ۳ ساعت پیش از خواب.</span></div>
+          <div class="step"><span class="t num">۲۱:۰۰</span><b>نمایشگرها کنار</b><span>موبایل را کنار بگذارید و کتاب، موسیقی آرام یا دوش آب گرم را جایگزین کنید.</span></div>
+          <div class="step sleep"><span class="t num">۲۳:۰۰</span><b>خواب</b><span>چراغ‌ها خاموش، بدن آمادهٔ استراحت.</span></div>
+          <div class="step"><span class="t num">۷ یا ۸</span><b>بیداری</b><span>روز را با یک لیوان آب ولرم شروع کنید.</span></div>
+        </div>
+        <div class="night-notes">
+          <div><h3>چرت روز</h3><p>اگر خسته‌اید، یک چرت کوتاه ۴۵ دقیقه تا ۱٫۵ ساعته در طول روز مجاز است.</p></div>
+          <div><h3>چرا از ساعت ۲۱؟</h3><p>کم کردن نور نمایشگرها و آرام کردن ذهن، استرس را کم و بدن را برای خواب آماده می‌کند.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>این برنامه یک راهنمای عمومی سبک زندگی است و جای توصیهٔ پزشک یا متخصص تغذیه را نمی‌گیرد. اگر بیماری، بارداری یا رژیم درمانی دارید، پیش از تغییر برنامه با پزشکتان مشورت کنید.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var DIG = '۰۱۲۳۴۵۶۷۸۹';
+  function fa(v){ return String(v).replace(/\d/g, function(d){ return DIG[d]; }); }
+  function num(n){ return Number(n).toLocaleString('fa-IR', {useGrouping:false, maximumFractionDigits:2}); }
+  function pad(n){ return String(n).padStart(2, '0'); }
+  function hm(m){ m = ((m % 1440) + 1440) % 1440; return fa(pad(Math.floor(m / 60)) + ':' + pad(m % 60)); }
+  function dur(m){ var h = Math.floor(m / 60), r = m % 60; if (!h) return fa(r) + ' دقیقه'; if (!r) return fa(h) + ' ساعت'; return fa(h) + ' ساعت و ' + fa(r) + ' دقیقه'; }
+  function dayKey(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function today(){ return dayKey(new Date()); }
+
+  /* ---------- the day's schedule (minutes from midnight) ---------- */
+  var SEG = [
+    {id:'sleep',  s:23*60,    e:7*60,     band:true,  color:'var(--night)',       title:'خواب شبانه',        short:'خواب',       detail:'ساعت ۲۳ بخوابید و ساعت ۷ یا ۸ بیدار شوید.'},
+    {id:'wake',   s:7*60,     e:8*60,     band:false, color:'var(--accent-fill)', title:'بیداری و صبحانه',   short:'صبحانه',     detail:'صبحانهٔ سبک و پرفیبر، پیش از ساعت ۸: نان سنگک، خرما یا انجیر، جوانهٔ گندم یا ماش.'},
+    {id:'snack1', s:10*60,    e:11*60,    band:false, color:'var(--accent-fill)', title:'میان‌وعدهٔ صبح',    short:'میان‌وعده',  detail:'۱ واحد میوه، یا ۱۰ تا ۱۵ بادام درختی و ۲ گردو.'},
+    {id:'lunch',  s:13*60,    e:15*60,    band:false, color:'var(--accent-fill)', title:'ناهار',             short:'ناهار',      detail:'سالاد فصل، ۱۰۰ تا ۱۲۰ گرم پروتئین سبک، یک کف دست نان سنگک یا کته، و کمی حبوبات.'},
+    {id:'snack2', s:16*60,    e:17*60,    band:false, color:'var(--accent-fill)', title:'دمنوش عصر',         short:'دمنوش',      detail:'یک لیوان بابونه یا سنبل‌الطیب، یا یک واحد میوه.'},
+    {id:'walk',   s:17*60+30, e:18*60,    band:false, color:'var(--leaf)',        title:'پیاده‌روی',         short:'پیاده‌روی',  detail:'۳۰ دقیقه پیاده‌روی آرام، ترجیحاً در هوای آزاد. این ساعت پیشنهادی است.', suggested:true},
+    {id:'dinner', s:18*60+30, e:19*60+30, band:false, color:'var(--accent-fill)', title:'شام سبک',           short:'شام',        detail:'سوپ سبزیجات یا جو، با کمی ماست کم‌چرب خانگی یا چند مغز. حداکثر تا ساعت ۱۹:۳۰.'},
+    {id:'wind',   s:21*60,    e:23*60,    band:true,  color:'var(--dusk)',        title:'آرامش پیش از خواب', short:'آرامش شب',   detail:'موبایل و نمایشگرها را کنار بگذارید. کتاب، موسیقی آرام‌بخش، دوش آب گرم یا تمرین تنفس.'}
+  ];
+  function inSeg(g, t){ return g.s <= g.e ? (t >= g.s && t < g.e) : (t >= g.s || t < g.e); }
+  function segLen(g){ return (g.e - g.s + 1440) % 1440; }
+
+  /* ---------- dial ---------- */
+  var C = 180;
+  function ang(m){ return (m / 60 - 12) * 15; }              /* noon at the top, clockwise */
+  function pol(a, r){ var rad = a * Math.PI / 180; return {x:(C + r * Math.sin(rad)).toFixed(2), y:(C - r * Math.cos(rad)).toFixed(2)}; }
+  function arc(r, m1, m2){
+    var len = (m2 - m1 + 1440) % 1440 || 1440, a1 = ang(m1), a2 = a1 + len / 1440 * 360;
+    var p1 = pol(a1, r), p2 = pol(a2, r), large = len > 720 ? 1 : 0;
+    return 'M' + p1.x + ' ' + p1.y + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + p2.x + ' ' + p2.y;
+  }
+  function buildDial(){
+    var s = '';
+    s += '<circle cx="' + C + '" cy="' + C + '" r="130" style="fill:none;stroke:var(--surface-2);stroke-width:24"/>';
+    s += '<circle cx="' + C + '" cy="' + C + '" r="100" style="fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:2 5"/>';
+    SEG.forEach(function(g){
+      var r = g.band ? 130 : 100;
+      s += '<path class="seg" data-id="' + g.id + '" d="' + arc(r, g.s, g.e) + '" style="fill:none;stroke:' + g.color + ';stroke-width:' + (g.band ? 24 : 12) + ';stroke-linecap:' + (g.band ? 'butt' : 'round') + '"><title>' + g.title + ' · ' + hm(g.s) + ' تا ' + hm(g.e) + '</title></path>';
+    });
+    for (var h = 0; h < 24; h++){
+      var major = h % 3 === 0, a = (h - 12) * 15, p1 = pol(a, 147), p2 = pol(a, major ? 157 : 152);
+      s += '<line class="dial-tick" x1="' + p1.x + '" y1="' + p1.y + '" x2="' + p2.x + '" y2="' + p2.y + '" style="stroke-width:' + (major ? 1.6 : 1) + '"/>';
+      if (major && h !== 0 && h !== 12){ var q = pol(a, 170); s += '<text class="dial-num" x="' + q.x + '" y="' + q.y + '" text-anchor="middle" dominant-baseline="central">' + fa(h) + '</text>'; }
+    }
+    /* sun at noon, moon at midnight */
+    var sun = pol(0, 171);
+    s += '<g style="stroke:var(--accent-fill);stroke-width:1.6;stroke-linecap:round"><circle cx="' + sun.x + '" cy="' + sun.y + '" r="4.5" style="fill:var(--accent-fill)"/>';
+    for (var k = 0; k < 8; k++){ var ra = k * 45 * Math.PI / 180; s += '<line x1="' + (+sun.x + 7 * Math.cos(ra)).toFixed(2) + '" y1="' + (+sun.y + 7 * Math.sin(ra)).toFixed(2) + '" x2="' + (+sun.x + 9.5 * Math.cos(ra)).toFixed(2) + '" y2="' + (+sun.y + 9.5 * Math.sin(ra)).toFixed(2) + '"/>'; }
+    s += '</g>';
+    var moon = pol(180, 170);
+    s += '<circle cx="' + moon.x + '" cy="' + moon.y + '" r="6.5" style="fill:var(--night)"/><circle cx="' + (+moon.x + 3.2).toFixed(2) + '" cy="' + (+moon.y - 2.4).toFixed(2) + '" r="5.6" style="fill:var(--bg)"/>';
+    /* hand + centre */
+    s += '<g id="hand"><line x1="' + C + '" y1="' + (C - 72) + '" x2="' + C + '" y2="' + (C - 150) + '" style="stroke:var(--ink);stroke-width:2.5;stroke-linecap:round"/><circle cx="' + C + '" cy="' + (C - 150) + '" r="6.5" style="fill:var(--accent-fill);stroke:var(--bg);stroke-width:2.5"/></g>';
+    s += '<circle cx="' + C + '" cy="' + C + '" r="68" style="fill:var(--surface);stroke:var(--line);stroke-width:1"/>';
+    s += '<text class="dial-kicker" x="' + C + '" y="' + (C - 28) + '" text-anchor="middle">اکنون</text>';
+    s += '<text class="dial-time" id="dialTime" x="' + C + '" y="' + (C + 6) + '" text-anchor="middle" dominant-baseline="middle"></text>';
+    s += '<text class="dial-label" id="dialLabel" x="' + C + '" y="' + (C + 36) + '" text-anchor="middle"></text>';
+    $('#dial').innerHTML = s;
+  }
+
+  /* ---------- "now" card ---------- */
+  function greet(h){ return h < 5 ? 'شب بخیر' : h < 12 ? 'صبح بخیر' : h < 15 ? 'ظهر بخیر' : h < 19 ? 'عصر بخیر' : 'شب بخیر'; }
+  function freeDetail(t){
+    if (t >= 15*60 && t < 16*60) return 'اگر خسته‌اید، یک چرت کوتاه ۴۵ دقیقه تا ۱٫۵ ساعته مجاز است.';
+    if (t >= 19*60+30 && t < 21*60) return 'شام تمام شد. از ساعت ۲۱ نمایشگرها را کنار بگذارید.';
+    return 'آب ولرم یا دمنوش گیاهی بنوشید. هدف امروز ۲ تا ۲٫۵ لیتر است.';
+  }
+  function hintFor(t, cur){
+    if (cur && cur.id === 'wake' && t < 7*60+30) return 'روز را با یک لیوان آب ولرم شروع کنید. صبحانه نیم ساعت بعد.';
+    if ((t >= 12*60+30 && t < 13*60) || (t >= 18*60 && t < 18*60+30)) return 'وقت یک لیوان آب ولرم است. نیم ساعت دیگر وقت غذاست.';
+    if (cur && (cur.id === 'lunch' || cur.id === 'dinner')) return 'حین غذا چیزی ننوشید. یک ساعت بعد از غذا نوشیدن آب اشکالی ندارد.';
+    if (t >= 19*60+30 && t < 20*60+30) return 'تا یک ساعت بعد از شام چیزی ننوشید.';
+    return '';
+  }
+  var DATE_FMT = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  function jalali(d){
+    var p = {};
+    DATE_FMT.formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+    return p.weekday + ' ' + p.day + ' ' + p.month + ' ' + p.year;
+  }
+  var dialEl, handEl;
+  function renderClock(){
+    var d = new Date(), t = d.getHours() * 60 + d.getMinutes();
+    $('#dateLine').textContent = jalali(d);
+    $('#greet').textContent = greet(d.getHours());
+
+    var cur = null;
+    SEG.forEach(function(g){ if (inSeg(g, t)) cur = g; });
+    var next = SEG.filter(function(g){ return g !== cur; })
+      .map(function(g){ return {g:g, d:(g.s - t + 1440) % 1440}; })
+      .filter(function(x){ return x.d > 0; })
+      .sort(function(a, b){ return a.d - b.d; })[0];
+
+    if (cur){
+      var el = (t - cur.s + 1440) % 1440;
+      $('#nowTitle').textContent = cur.title;
+      $('#nowDetail').textContent = cur.detail;
+      $('#nowRange').textContent = hm(cur.s) + ' تا ' + hm(cur.e);
+      $('#nowBar').style.width = Math.min(100, el / segLen(cur) * 100).toFixed(1) + '%';
+    } else {
+      $('#nowTitle').textContent = 'وقت آزاد';
+      $('#nowDetail').textContent = freeDetail(t);
+      $('#nowRange').textContent = next ? 'تا ' + hm(next.g.s) : '';
+      $('#nowBar').style.width = '0%';
+    }
+    var hint = hintFor(t, cur);
+    $('#nowHint').hidden = !hint;
+    $('#nowHintText').textContent = hint;
+    if (next){
+      $('#nextTitle').textContent = 'بعدی: ' + next.g.title + (next.g.suggested ? ' (پیشنهادی)' : '');
+      $('#nextIn').textContent = dur(next.d) + ' دیگر، ساعت ' + hm(next.g.s);
+    }
+
+    handEl.setAttribute('transform', 'rotate(' + ang(t).toFixed(2) + ' ' + C + ' ' + C + ')');
+    $('#dialTime').textContent = hm(t);
+    $('#dialLabel').textContent = cur ? cur.short : 'وقت آزاد';
+    dialEl.classList.toggle('has-now', !!cur);
+    dialEl.querySelectorAll('.seg').forEach(function(p){ p.classList.toggle('is-now', !!cur && p.dataset.id === cur.id); });
+
+    document.querySelectorAll('.meal').forEach(function(m){
+      var pill = m.querySelector('.pill'), id = m.dataset.seg;
+      if (cur && cur.id === id){ pill.hidden = false; pill.className = 'pill'; pill.innerHTML = '<span class="dot"></span>الان وقتش است'; }
+      else if (next && next.g.id === id){ pill.hidden = false; pill.className = 'pill next'; pill.textContent = 'وعدهٔ بعدی'; }
+      else pill.hidden = true;
+    });
+  }
+
+  /* ---------- daily checklist + water ---------- */
+  var CHECKS = [
+    {id:'wake',      g:0, t:'۷ تا ۸',          label:'سر وقت بیدار شدم'},
+    {id:'breakfast', g:0, t:'تا ۸',            label:'صبحانهٔ سبک و پرفیبر'},
+    {id:'snack1',    g:0, t:'۱۰ تا ۱۱',        label:'میان‌وعدهٔ صبح'},
+    {id:'lunch',     g:1, t:'۱۳ تا ۱۵',        label:'ناهار با سالاد و پروتئین سبک'},
+    {id:'snack2',    g:1, t:'۱۶ تا ۱۷',        label:'دمنوش یا میوهٔ عصر'},
+    {id:'walk',      g:1, t:'۳۰ دقیقه',        label:'پیاده‌روی در هوای آزاد'},
+    {id:'dinner',    g:2, t:'تا ۱۹:۳۰',        label:'شام سبک'},
+    {id:'screens',   g:2, t:'از ۲۱',           label:'موبایل را کنار گذاشتم'},
+    {id:'sleep',     g:2, t:'۲۳',              label:'سر وقت به رختخواب رفتم'},
+    {id:'calm',      g:3, t:'۱۵ تا ۲۰ دقیقه',  label:'مدیتیشن یا تنفس عمیق'},
+    {id:'clean',     g:3, t:'تمام روز',        label:'هیچ خوراکی حذفی نخوردم'}
+  ];
+  var GROUPS = ['صبح', 'ظهر و عصر', 'شب', 'در طول روز'];
+  var WATER_GOAL = 8, WATER_MAX = 10;
+
+  var LS = 'banoo-days-v1', days = {};
+  try { days = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { days = {}; }
+  function saveLocal(){ try { localStorage.setItem(LS, JSON.stringify(days)); } catch (e) {} }
+  function peek(k){ return days[k] || {checks:{}, water:0}; }
+  function dayState(k){ if (!days[k]) days[k] = {checks:{}, water:0}; return days[k]; }
+  function doneCount(st){ return CHECKS.filter(function(c){ return st.checks && st.checks[c.id]; }).length; }
+  function score(st){ return (doneCount(st) + Math.min((st.water || 0) / WATER_GOAL, 1)) / (CHECKS.length + 1); }
+
+  var list = $('#checklist');
+  GROUPS.forEach(function(name, gi){
+    var box = document.createElement('div'); box.className = 'chk-group';
+    var h = document.createElement('h3'); h.className = 'chk-h'; h.textContent = name; box.appendChild(h);
+    CHECKS.filter(function(c){ return c.g === gi; }).forEach(function(c){
+      var lab = document.createElement('label'); lab.className = 'chk';
+      lab.innerHTML = '<input type="checkbox" id="chk-' + c.id + '" data-id="' + c.id + '"><span class="box" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7"/></svg></span><span class="chk-l">' + c.label + '</span><span class="chk-t">' + c.t + '</span>';
+      box.appendChild(lab);
+    });
+    list.appendChild(box);
+  });
+  list.addEventListener('change', function(e){
+    var id = e.target.dataset && e.target.dataset.id; if (!id) return;
+    var k = today(), st = dayState(k);
+    if (e.target.checked) st.checks[id] = true; else delete st.checks[id];
+    commit(k);
+  });
+
+  var GLASS = '<svg viewBox="0 0 24 32" aria-hidden="true"><path class="g-in" d="M5.6 11h12.8l-1.5 16.2a1.6 1.6 0 0 1-1.6 1.4H8.7a1.6 1.6 0 0 1-1.6-1.4z"/><path class="g-out" d="M3 3.5h18l-2.3 24a2.4 2.4 0 0 1-2.4 2.1H7.7a2.4 2.4 0 0 1-2.4-2.1z"/></svg>';
+  var glassesEl = $('#glasses');
+  for (var i = 0; i < WATER_MAX; i++){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'glass' + (i >= WATER_GOAL ? ' extra' : ''); b.dataset.i = i;
+    b.setAttribute('aria-label', 'لیوان ' + fa(i + 1)); b.innerHTML = GLASS;
+    glassesEl.appendChild(b);
+  }
+  glassesEl.addEventListener('click', function(e){
+    var g = e.target.closest('.glass'); if (!g) return;
+    var n = +g.dataset.i + 1, k = today(), st = dayState(k);
+    st.water = (st.water === n) ? n - 1 : n;
+    commit(k);
+  });
+  $('#waterMinus').addEventListener('click', function(){
+    var k = today(), st = dayState(k);
+    if ((st.water || 0) > 0){ st.water -= 1; commit(k); }
+  });
+
+  var WD = new Intl.DateTimeFormat('fa-IR', {weekday:'narrow'});
+  var DM = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {weekday:'long', day:'numeric', month:'long'});
+  var renderedKey = '';
+  function renderToday(){
+    var k = today(), st = peek(k);
+    renderedKey = k;
+    CHECKS.forEach(function(c){ $('#chk-' + c.id).checked = !!st.checks[c.id]; });
+
+    var w = st.water || 0;
+    glassesEl.querySelectorAll('.glass').forEach(function(g, idx){
+      var full = idx < w; g.classList.toggle('full', full); g.setAttribute('aria-pressed', full ? 'true' : 'false');
+    });
+    $('#waterTxt').innerHTML = '<b>' + fa(w) + ' لیوان</b> · ' + num(w * 0.25) + ' لیتر';
+    $('#waterGoal').textContent = w < WATER_GOAL ? 'تا هدف ۲ لیتر: ' + fa(WATER_GOAL - w) + ' لیوان دیگر' : (w < WATER_MAX ? 'به هدف ۲ لیتر رسیدید. تا ۲٫۵ لیتر هم خوب است.' : '۲٫۵ لیتر کامل شد.');
+    $('#waterMinus').disabled = w === 0;
+
+    var sc = score(st), pct = Math.round(sc * 100), done = doneCount(st);
+    $('#ringVal').style.strokeDashoffset = (314.16 * (1 - sc)).toFixed(2);
+    $('#ringTxt').textContent = fa(pct) + '٪';
+    $('#scoreMsg').textContent = sc === 0 ? 'روز تازه‌ای است. از اولین مورد شروع کنید.' : sc < .5 ? 'شروع خوبی بوده؛ ادامه بدهید.' : sc < 1 ? 'بیشتر از نیمهٔ برنامهٔ امروز انجام شده.' : 'همهٔ برنامهٔ امروز انجام شد.';
+    $('#scoreCount').textContent = fa(done) + ' از ' + fa(CHECKS.length) + ' کار · ' + fa(w) + ' لیوان آب';
+
+    var wk = '', base = new Date();
+    for (var j = 6; j >= 0; j--){
+      var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() - j);
+      var p = Math.round(score(peek(dayKey(d))) * 100);
+      wk += '<div class="wk' + (j === 0 ? ' is-today' : '') + '" title="' + DM.format(d) + ': ' + fa(p) + '٪"><div class="wk-bar"><i style="height:' + Math.max(p, 4) + '%"></i></div><span>' + WD.format(d) + '</span></div>';
+    }
+    $('#week').innerHTML = wk;
+  }
+  function commit(k){ saveLocal(); queueRemote(k); renderToday(); }
+
+  /* ---------- optional sync to the viewer's private store ---------- */
+  var remote = null, dirty = {}, flushTimer = null, writing = false, retried = false;
+  function setSync(mode){
+    var el = $('#sync');
+    el.classList.toggle('cloud', mode === 'cloud');
+    $('#syncTxt').textContent = mode === 'cloud' ? 'پیشرفت شما در حسابتان ذخیره می‌شود و روی همهٔ دستگاه‌هایتان در دسترس است.' : 'پیشرفت شما در همین مرورگر ذخیره می‌شود.';
+  }
+  function queueRemote(k){
+    if (!remote) return;
+    dirty[k] = true;
+    clearTimeout(flushTimer); flushTimer = setTimeout(flush, 700);
+  }
+  function flush(){
+    if (!remote || writing) return;
+    var keys = Object.keys(dirty); if (!keys.length) return;
+    var k = keys[0]; delete dirty[k];
+    var st = peek(k);
+    writing = true;
+    remote.col.doc(k).set({date:k, checks:Object.assign({}, st.checks), water:st.water || 0}).then(function(){
+      retried = false;
+    }, function(err){
+      if (err && err.code === 'unavailable' && !retried){ retried = true; dirty[k] = true; }
+      else { remote = null; setSync('local'); }
+    }).then(function(){
+      writing = false;
+      if (remote && Object.keys(dirty).length){ clearTimeout(flushTimer); flushTimer = setTimeout(flush, retried ? 1200 + Math.random() * 1500 : 300); }
+    });
+  }
+  (async function initRemote(){
+    try {
+      if (!window.claude || typeof window.claude.use !== 'function') return;
+      var db = await window.claude.use('db'); if (!db) return;
+      var user = await window.claude.use('user'); if (!user) return;
+      var uid = await user.id(); if (!uid) return;
+      var col = db.collection('data/users/' + uid);
+      remote = {col:col};
+      var settled = false;
+      col.orderBy('date', 'desc').limit(14).onSnapshot(function(snap){
+        snap.docs.forEach(function(doc){
+          var v = doc.data(); if (!v || typeof v.date !== 'string' || dirty[v.date]) return;
+          days[v.date] = {checks:Object.assign({}, v.checks || {}), water:Number(v.water) || 0};
+        });
+        if (!settled && !snap.metadata.fromCache){
+          settled = true;
+          var k = today();
+          if (!snap.docs.some(function(doc){ return doc.id === k; }) && days[k] && score(days[k]) > 0) queueRemote(k);
+        }
+        saveLocal(); renderToday();
+        if (remote) setSync('cloud');
+      }, function(){ remote = null; setSync('local'); });
+    } catch (e) { remote = null; }
+  })();
+
+  /* ---------- food finder ---------- */
+  var GOOD = [
+    ['سبزی و میوه', ['کاهو', 'اسفناج پخته', 'کلم بروکلی', 'خیار', 'هویج', 'سبزیجات برگ سبز', 'میوه']],
+    ['پروتئین', ['ماهی آب‌پز یا بخارپز', 'بوقلمون', 'مرغ بدون پوست', 'عدس', 'نخود', 'لوبیا']],
+    ['مغزها (خام و بی‌نمک)', ['بادام', 'گردو', 'فندق', 'پسته']],
+    ['نان و غلات', ['نان سنگک', 'برنج ایرانی', 'جو سبوس‌دار', 'جوانهٔ گندم', 'جوانهٔ ماش', 'سیب‌زمینی آب‌پز یا کبابی']],
+    ['چربی و شیرینی سالم', ['روغن زیتون بکر', 'روغن کنجد', 'کرهٔ محلی (کم)', 'عسل طبیعی', 'خرما', 'انجیر خشک']],
+    ['لبنیات، طعم و دمنوش', ['ماست کم‌چرب خانگی', 'رب خانگی', 'آبلیموی خانگی', 'دمنوش بابونه', 'دمنوش نعناع', 'سنبل‌الطیب']]
+  ];
+  var BAD = [
+    ['تنقلات و شیرینی', ['چیپس', 'پفک', 'شیرینی قنادی', 'مربای پرشکر']],
+    ['غذای آماده', ['فست‌فود', 'سوسیس', 'کالباس', 'غذای آماده', 'کنسرو', 'غذای مانده یا دوبار گرم‌شده']],
+    ['گوشت و لبنیات', ['گوشت گاو', 'بال مرغ', 'گردن مرغ', 'شیر پرچرب', 'پنیر پیتزا', 'خامه']],
+    ['آرد، روغن و سرخ‌کردنی', ['آرد سفید', 'نان سفید', 'ماکارونی', 'پاستا', 'روغن جامد', 'روغن مایع صنعتی', 'غذای سرخ‌شده']],
+    ['نوشیدنی', ['نوشابه', 'نوشیدنی گازدار', 'آبمیوهٔ صنعتی', 'قهوه', 'چای پررنگ', 'الکل']],
+    ['طعم و عادت', ['غذای تند', 'ادویهٔ زیاد', 'سیگار', 'قلیان']]
+  ];
+  var ALIAS = {
+    'میوه':['سیب', 'پرتقال', 'موز', 'انار', 'کیوی', 'نارنگی', 'گلابی', 'هلو', 'انگور'],
+    'ماهی آب‌پز یا بخارپز':['ماهی'], 'مرغ بدون پوست':['مرغ', 'سینه مرغ'], 'برنج ایرانی':['برنج', 'کته'],
+    'فست‌فود':['پیتزا', 'همبرگر', 'هات‌داگ', 'ساندویچ'], 'غذای سرخ‌شده':['سوخاری', 'سیب‌زمینی سرخ‌کرده', 'سرخ‌کردنی'],
+    'قهوه':['نسکافه', 'اسپرسو', 'کافی'], 'نوشابه':['کولا', 'پپسی'], 'شیرینی قنادی':['کیک', 'شیرینی'],
+    'گوشت گاو':['گوساله', 'استیک'], 'چای پررنگ':['چای'], 'عسل طبیعی':['عسل'], 'نان سفید':['باگت', 'نان تست'],
+    'مربای پرشکر':['مربا', 'شکر']
+  };
+  function norm(s){ return String(s).replace(/ي/g, 'ی').replace(/ك/g, 'ک').replace(/[آأإ]/g, 'ا').replace(/ۀ|هٔ/g, 'ه').replace(/[ً-ْٔ]/g, '').replace(/[\s‌‏‎]+/g, '').toLowerCase(); }
+  var FOODS = [];
+  function buildFoods(groups, good, host){
+    var html = '';
+    groups.forEach(function(g){
+      html += '<div class="fgroup"><h4>' + g[0] + '</h4><div class="chips">';
+      g[1].forEach(function(name){
+        var idx = FOODS.length;
+        FOODS.push({name:name, good:good, group:g[0], keys:[name].concat(ALIAS[name] || []).map(norm)});
+        html += '<span class="chip ' + (good ? 'good' : 'bad') + '" data-f="' + idx + '">' + name + '</span>';
+      });
+      html += '</div></div>';
+    });
+    host.innerHTML = html;
+  }
+  buildFoods(GOOD, true, $('#goodList'));
+  buildFoods(BAD, false, $('#badList'));
+
+  var resEl = $('#results'), qEl = $('#foodQ');
+  function runSearch(){
+    var q = norm(qEl.value);
+    document.querySelectorAll('.chip.hit').forEach(function(c){ c.classList.remove('hit'); });
+    if (q.length < 2){ resEl.innerHTML = ''; return; }
+    var hits = FOODS.filter(function(f){ return f.keys.some(function(k){ return k.indexOf(q) !== -1 || (k.length >= 3 && q.indexOf(k) !== -1); }); });
+    if (!hits.length){
+      resEl.innerHTML = '<p class="res-empty">این خوراکی در فهرست برنامه نیست. برای مصرفش با متخصص تغذیه مشورت کنید.</p>';
+      return;
+    }
+    resEl.innerHTML = '';
+    hits.slice(0, 6).forEach(function(f){
+      var row = document.createElement('div'); row.className = 'res';
+      var v = document.createElement('span'); v.className = 'verdict ' + (f.good ? 'good' : 'bad'); v.textContent = f.good ? 'مفید' : 'حذف شود';
+      var n = document.createElement('b'); n.textContent = f.name;
+      var g = document.createElement('small'); g.textContent = f.group;
+      row.appendChild(v); row.appendChild(n); row.appendChild(g);
+      resEl.appendChild(row);
+      var chip = document.querySelector('.chip[data-f="' + FOODS.indexOf(f) + '"]'); if (chip) chip.classList.add('hit');
+    });
+  }
+  qEl.addEventListener('input', runSearch);
+  $('#examples').addEventListener('click', function(e){
+    var b = e.target.closest('.ex'); if (!b) return;
+    qEl.value = b.textContent; runSearch(); qEl.focus();
+  });
+
+  /* ---------- breathing ---------- */
+  var PH = [{label:'دم', sec:4, scale:1}, {label:'نگه دارید', sec:2, scale:1}, {label:'بازدم', sec:6, scale:.55}];
+  var orb = $('#orb'), orbLabel = $('#orbLabel'), bTime = $('#breathTime'), bBtn = $('#breathBtn'), bMsg = $('#breathMsg');
+  var IDLE_TXT = bTime.textContent, run = null;
+  function mmss(ms){ var s = Math.ceil(ms / 1000); return fa(Math.floor(s / 60)) + ':' + fa(pad(s % 60)); }
+  function startBreath(){
+    var mins = Number((document.querySelector('input[name="bdur"]:checked') || {}).value || 15);
+    run = {end:Date.now() + mins * 60000, mins:mins, i:0, t:null, iv:null};
+    bMsg.textContent = '';
+    var step = function(){
+      var ph = PH[run.i % PH.length]; run.i++;
+      orbLabel.textContent = ph.label;
+      orb.style.transitionDuration = ph.sec + 's';
+      orb.style.transform = 'scale(' + ph.scale + ')';
+      run.t = setTimeout(step, ph.sec * 1000);
+    };
+    run.iv = setInterval(tick, 500);
+    step(); tick();
+    bBtn.textContent = 'توقف';
+  }
+  function tick(){
+    if (!run) return;
+    var left = run.end - Date.now();
+    if (left <= 0){ stopBreath(true); return; }
+    bTime.textContent = 'باقی‌مانده ' + mmss(left);
+  }
+  function stopBreath(done){
+    clearTimeout(run.t); clearInterval(run.iv);
+    var mins = run.mins; run = null;
+    orb.style.transitionDuration = '1s'; orb.style.transform = 'scale(.55)';
+    orbLabel.textContent = done ? 'تمام شد' : 'آماده';
+    bTime.textContent = IDLE_TXT;
+    bBtn.textContent = 'شروع';
+    if (done && mins >= 15){
+      var k = today(); dayState(k).checks.calm = true; commit(k);
+      bMsg.textContent = 'آرام‌سازی امروز در چک‌لیست ثبت شد.';
+    } else if (done){
+      bMsg.textContent = 'تمرین ' + fa(mins) + ' دقیقه‌ای تمام شد.';
+    }
+  }
+  bBtn.addEventListener('click', function(){ if (run) stopBreath(false); else startBreath(); });
+
+  /* ---------- boot ---------- */
+  buildDial();
+  dialEl = $('#dial'); handEl = $('#hand');
+  renderClock(); renderToday();
+  setInterval(function(){ renderClock(); if (today() !== renderedKey) renderToday(); }, 20000);
+})();
+</script>
